@@ -3,12 +3,13 @@ package SD_project.Online_Weapons_And_Armor_Shop.persistence.repositories;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Product;
 
 @Repository
-public interface ProductRepository {
+public interface ProductRepository extends JpaRepository<Product, Integer>{
 	public List<Product> findAll();
 	public Optional<Product> findById(int id);
 	public List<Product> findByPrice(int price);

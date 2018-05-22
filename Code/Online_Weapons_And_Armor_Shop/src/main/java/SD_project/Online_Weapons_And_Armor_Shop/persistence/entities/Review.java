@@ -27,6 +27,9 @@ public class Review {
 	@Lob
 	@Column(name = "review")
 	private String review;
+	
+	@Column(name = "flagged")
+	private Boolean flagged;
 
 	public int getId() {
 		return id;
@@ -50,5 +53,13 @@ public class Review {
 
 	public void setReview(String review) {
 		this.review = review;
+	}
+
+	public Boolean getFlagged() {
+		return flagged;
+	}
+
+	public void setFlagged(Boolean flagged) {
+		this.flagged = flagged;
 	}
 }
