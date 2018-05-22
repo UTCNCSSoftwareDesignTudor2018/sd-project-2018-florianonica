@@ -1,5 +1,6 @@
 package SD_project.Online_Weapons_And_Armor_Shop.persistence.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,9 @@ public class OrderProduct {
 	@JoinColumn(name = "orderid")
 	@NotNull
 	private Order order;
+	
+	@Column(name = "quantity")
+	private int quantity;
 
 	public int getId() {
 		return id;
@@ -49,5 +53,13 @@ public class OrderProduct {
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 }

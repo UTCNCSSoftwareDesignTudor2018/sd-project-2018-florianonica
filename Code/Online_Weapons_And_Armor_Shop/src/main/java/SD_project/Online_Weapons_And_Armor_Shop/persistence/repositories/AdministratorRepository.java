@@ -1,5 +1,16 @@
 package SD_project.Online_Weapons_And_Armor_Shop.persistence.repositories;
 
-public class AdministratorRepository {
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
+import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Administrator;
+
+@Repository
+public interface AdministratorRepository {
+	public List<Administrator> findAll();
+	public Optional<Administrator> findById(int id);
+	public Administrator findByUsernameAndPassword(String username, String password);
+	public Administrator findByFirstNameAndLastName(String firstName, String lastName);
 }
