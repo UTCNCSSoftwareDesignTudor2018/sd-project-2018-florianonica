@@ -31,6 +31,9 @@ public class Client {
 
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "card")
+	private String card;
 
 	public int getId() {
 		return id;
@@ -86,5 +89,13 @@ public class Client {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getCard() {
+		return card;
+	}
+
+	public void setCard(String card) {
+		this.card = card;
 	}
 }

@@ -27,6 +27,9 @@ public class Order {
 	@JoinColumn(name = "clientid")
 	@NotNull
 	private Client client;
+	
+	@Column(name = "payment")
+	private String payment;
 
 	public int getId() {
 		return id;
