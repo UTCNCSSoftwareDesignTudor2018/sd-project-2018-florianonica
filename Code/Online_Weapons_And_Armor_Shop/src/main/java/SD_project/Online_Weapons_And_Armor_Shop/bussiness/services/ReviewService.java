@@ -32,4 +32,12 @@ public class ReviewService {
 	public Review getById(int id) {
 		return rr.findById(id).get();
 	}
+	
+	public List<Review> getByProductId(int id) {
+		return rr.findByProductId(id);
+	}
+	
+	public List<Review> getByFlagged(Boolean flag) {
+		return rr.findByFlagged(flag);
+	}
 }
