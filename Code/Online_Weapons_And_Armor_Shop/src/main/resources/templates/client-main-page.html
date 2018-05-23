@@ -5,17 +5,22 @@
 <title>Hello! This is your student page</title>
 </head>
 <body>
+<h1>Welcome <p th:text="${client.firstName}"></p> <p th:text="${client.lastName}"></p></h1>
 <br><br><br><br><br><br>
 	<center>
 	
-		<form method="post" th:action="@{/user/profile}">
+		<form method="post" th:action="@{/client/profile}">
 			<button type="submit" name="profile">Profile Page</button>
 		</form>
 	<br>
-		<form method="post" th:action="@{/shop}">
+		<form method="post" th:action="@{/client/shop}">
 			<button type="submit" name="shop">Shop Page</button>
 		</form>
-
+	<br>
+		<form method="post" th:action="@{/client/logout}">
+			<button type="submit" name="shop">Logout</button>
+		</form>
+		
 		</center>
 </body>
 </html>

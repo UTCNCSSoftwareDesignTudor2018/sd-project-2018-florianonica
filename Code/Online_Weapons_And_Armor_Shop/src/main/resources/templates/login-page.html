@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Login page</h1>
-    <p th:if="${loginError}" class="error">Wrong user or password</p>
+    <p th:if="${loginError}" class="error"><font color="red">Wrong username or password</font></p>
     <form th:action="@{http://localhost:8080/start/login}" method="post">
       <label for="username">Username</label>:
       <input type="text" id="username" name="username" autofocus="autofocus" /> 
@@ -19,5 +19,6 @@
 	<form method="post" th:action="@{/start/signup}">
 		<button type="submit" name="shop">Sign up</button>
 	</form>
+	<p th:if="${signUpSuccess}" class="error"><font color="green">Sign up success</font></p>
   </body>
 </html>

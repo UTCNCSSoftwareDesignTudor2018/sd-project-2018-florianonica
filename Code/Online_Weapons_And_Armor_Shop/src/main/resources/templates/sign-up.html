@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sign up</title>
 </head>
 <body>
+<p th:if="${loginError}" class="error"><font color="red">Passwords do not match</font></p>
+<p>
+	
+	<form method="POST" th:action="@{/start/signup/sign}">
+		<table>			
+			<tr>
+				<td>User Name: </td>
+				<td><input th:text="${client.username}" th:name="userName" /></td>
+			</tr>
+			
+			<tr>
+				<td>Password: </td>
+				<td> <input th:value="${client.password}" th:type="password" th:name="password"/></td>
+			</tr>
+			
+			<tr>
+				<td>Confirm Password: </td>
+				<td> <input th:value="${client.password}" th:type="password" th:name="cpassword"/></td>
+			</tr>
+			
+			<tr>
+				<td>First Name: </td>
+				<td><input th:value="${client.firstName}" th:name="firstName" th:type="text"/></td>
+			</tr>
+			
+			<tr>
+				<td>Last Name: </td>
+				<td><input th:value="${client.lastName}" th:name="lastName" th:type="text"/></td>
+			</tr>
 
+			<tr>
+				<td>Email: </td>
+				<td><input th:value="${client.email}" th:name="email" th:type="text"/></td>
+			</tr>
+			
+			<tr>
+				<td>Address: </td>
+				<td><input th:value="${client.address}" th:name="address" th:type="text"/></td>
+			</tr>
+
+			<tr>
+				<td><button type="submit">Save</button></td>
+			</tr>
+		</table>
+	</form>
+</p>
 </body>
 </html>

@@ -5,21 +5,25 @@
 <title>Hello! This is your teacher page</title>
 </head>
 <body>
+<h1>Welcome <p th:text="${administrator.firstName}"></p> <p th:text="${administrator.lastName}"></p></h1>
 <br><br><br><br><br><br>
 	<center>
 	
-		<form method="post" th:action="@{/user/profile}">
+		<form method="post" th:action="@{/admin/profile}">
 			<button type="submit" name="profile">Profile Page</button>
 		</form>
 	<br>
-		<form method="post" th:action="@{/shop}">
+		<form method="post" th:action="@{/admin/shop}">
 			<button type="submit" name="shop">Shop Page</button>
 		</form>
 	<br>
 		<form method="post" th:action="@{/admin/flagged}">
 			<button type="submit" name="flagged">Flagged-Reviews Page</button>
 		</form>
-		
+	<br>
+		<form method="post" th:action="@{/admin/logout}">
+			<button type="submit" name="shop">Logout</button>
+		</form>
 	</center>
 </body>
 </html>

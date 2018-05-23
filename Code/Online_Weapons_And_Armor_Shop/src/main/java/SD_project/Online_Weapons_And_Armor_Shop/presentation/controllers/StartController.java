@@ -21,7 +21,15 @@ public class StartController {
 
 	@Autowired
 	private ClientService cs;
-
+	
+	@Autowired
+	private AdminController ac;
+	
+	@Autowired
+	private ClientController cc;
+	
+	private int clientID;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView startApp() {
 		return new ModelAndView("login-page");
@@ -37,13 +45,55 @@ public class StartController {
 			mvl.addObject("loginError", true);
 			return mvl;
 		} else if (c == null) {
-			ModelAndView mvl = new ModelAndView("client-main-page");
+			ModelAndView mvl = new ModelAndView("admin-main-page");
+			mvl.addObject("administrator", a);
+			ac.setA(a);
 			return mvl;
 		} else if (a == null) {
-			ModelAndView mvl = new ModelAndView("admin-main-page");
+			ModelAndView mvl = new ModelAndView("client-main-page");
+			mvl.addObject("client", c);
 			return mvl;
 		}
 		ModelAndView mvl = new ModelAndView("login-page");
+		return mvl;
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public ModelAndView signUp(){
+		Client c = new Client();
+		ModelAndView mv = new ModelAndView("sign-up");
+		mv.addObject("client", c);
+		return mv;
+	}
+		
+	@RequestMapping(value = "/signup/sign", method = RequestMethod.POST)
+	public ModelAndView sign(@RequestParam(value = "username", required=false) String username,
+    		@RequestParam(value = "password", required=false) String password,
+    		@RequestParam(value = "cpassword", required=false) String cpassword,
+    		@RequestParam(value = "firstName", required=false) String firstName,
+    		@RequestParam(value = "lastName", required=false) String lastName,
+    		@RequestParam(value = "email", required=false) String email,
+    		@RequestParam(value = "address", required=false) String address) {
+		if (!password.equals(cpassword)) {
+			ModelAndView mvl = new ModelAndView("sign-up");
+			Client c = new Client();
+			mvl.addObject("loginError", true);
+			mvl.addObject("client", c);
+			return mvl;
+		}
+		Client c = new Client();
+		clientID = cs.getAll().size() + 1;
+		c.setId(clientID);
+		c.setUsername(username);
+		c.setPassword(password);
+		c.setAddress(address);
+		c.setEmail(email);
+		c.setCard("");
+		c.setFirstName(firstName);
+		c.setLastName(lastName);
+		cs.makeClient(c);
+		ModelAndView mvl = new ModelAndView("login-page");
+		mvl.addObject("signUpSuccess", true);
 		return mvl;
 	}
 }

@@ -6,46 +6,46 @@
 </head>
 <body>
 <p>
-	<form method="POST" th:action="@{/Admin/profile}">
+	<form method="POST" th:action="@{/admin/profile}">
 		<table>
 			<tr>
 				<td>Admin ID: </td>
-				<td><p th:text="${admin.id}" th:name="id"></p></td>
+				<td><p th:text="${administrator.id}" th:name="id"></p></td>
 			</tr>
 			
 			<tr>
 				<td>Username: </td>
-				<td><p th:text="${admin.username}" th:name="userName"></p></td>
+				<td><p th:text="${administrator.username}" th:name="username"></p></td>
 			</tr>
 			
 			<tr>
 				<td>Password: </td>
-				<td> <input th:value="${admin.password}" th:type="password" th:name="password"/></td>
+				<td> <input th:value="${administrator.password}" th:type="password" th:name="password"/></td>
 			</tr>
 			
 			<tr>
 				<td>Confirm Password: </td>
-				<td> <input th:value="${admin.password}" th:type="password" th:name="password"/></td>
+				<td> <input th:value="${administrator.password}" th:type="password" th:name="password"/></td>
 			</tr>
 			
 			<tr>
 				<td>First Name: </td>
-				<td><p th:text="${admin.firstName}" th:name="firstName"></p></td>
+				<td><p th:text="${administrator.firstName}" th:name="firstName"></p></td>
 			</tr>
 			
 			<tr>
 				<td>Last Name: </td>
-				<td><p th:text="${admin.lastName}" th:name="lastName"></p></td>
+				<td><p th:text="${administrator.lastName}" th:name="lastName"></p></td>
 			</tr>
 
 			<tr>
 				<td>Email: </td>
-				<td><input th:value="${admin.email}" th:name="email" th:type="text"/></td>
+				<td><input th:value="${administrator.email}" th:name="email" th:type="text"/></td>
 			</tr>
 			
 			<tr>
 				<td>Address: </td>
-				<td><input th:value="${admin.address}" th:name="address" th:type="text"/></td>
+				<td><input th:value="${administrator.address}" th:name="address" th:type="text"/></td>
 			</tr>
 
 			<tr>
