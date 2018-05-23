@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Profile</title>
+</head>
+<body>
+<p>
+	<form method="POST" th:action="@{/student/profile}">
+		<table>
+			<tr>
+				<td>Student ID: </td>
+				<td><p th:text="${student.studentID}" th:name="studentID"></p></td>
+			</tr>
+			<tr>
+				<td>User Name: </td>
+				<td><p th:text="${student.username}" th:name="userName"></p></td>
+			</tr>
+			<tr>
+				<td>Password: </td>
+				<td> <input th:value="${student.password}" th:type="password" th:name="password"/></td>
+			</tr>
+			<tr>
+				<td>First Name: </td>
+				<td><p th:text="${student.firstName}" th:name="firstName"></p></td>
+			</tr>
+			<tr>
+				<td>Last Name: </td>
+				<td><p th:text="${student.lastName}" th:name="lastName"></p></td>
+			</tr>
+			<tr>
+				<td>CNP: </td>
+				<td><p th:text="${student.CNP}" th:name="CNP" ></p></td>
+			</tr>
+			<tr>
+				<td>IdentityCardNumber: </td>
+				<td><p th:text="${student.identityCardNumber}" th:name="identityCardNumber"></p></td>
+			</tr>
+			<tr>
+				<td>Email: </td>
+				<td><input th:value="${student.email}" th:name="email" th:type="text"/></td>
+			</tr>
+			<tr>
+				<td>Address: </td>
+				<td><input th:value="${student.address}" th:name="address" th:type="text"/></td>
+			</tr>
+			<tr>
+				<td>Group: </td>
+				<td><p th:text="${student.studentGroup}" th:name="studentGroup"></p></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Save</button></td>
+			</tr>
+		</table>
+	</form>
+</p>
+</body>
+</html>
