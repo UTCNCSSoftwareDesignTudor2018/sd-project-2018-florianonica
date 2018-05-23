@@ -1,10 +1,34 @@
 package SD_project.Online_Weapons_And_Armor_Shop.presentation.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/login")
-public class AdminController {
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.AdministratorService;
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.MaterialService;
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.OrderProductService;
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.OrderService;
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.ProductService;
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.ReviewService;
 
+@Controller
+@RequestMapping("/admin")
+public class AdminController {
+	@Autowired
+	private AdministratorService as;
+	
+	@Autowired
+	private ProductService ps;
+	
+	@Autowired
+	private OrderService os;
+	
+	@Autowired
+	private OrderProductService ops;
+	
+	@Autowired
+	private MaterialService ms;
+	
+	@Autowired
+	private ReviewService rs;
 }
