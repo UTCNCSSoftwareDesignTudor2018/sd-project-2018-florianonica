@@ -54,4 +54,12 @@ public class Order {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
 }

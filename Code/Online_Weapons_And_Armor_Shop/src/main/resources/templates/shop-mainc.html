@@ -5,7 +5,7 @@
 <title>Shop</title>
 </head>
 <body>
-	<form action="#" th:action="@{/admin/shop/product}" method="post">
+	<form action="#" th:action="@{/client/shop/product}" method="post">
 		<select name="productSelect">
 	       	<option value="">--</option>
 	       	<option
@@ -16,7 +16,7 @@
 	   	</select>
    		<button type="submit">View product</button>
    	</form>
-   		<form action="#" th:action="@{/admin/shop/mat}" method="post">
+   		<form action="#" th:action="@{/client/shop/mat}" method="post">
 		<select name="materialSelect">
 	       	<option value="">--</option>
 	       	<option
@@ -27,7 +27,7 @@
 	   	</select>
    		<button type="submit">View material</button>
    	</form>
-   	<form method="post" th:action="@{/admin/cart}">
+   	<form method="post" th:action="@{/client/cart}">
 		<button type="submit" name="shop">To cart</button>
 	</form>
 </body>

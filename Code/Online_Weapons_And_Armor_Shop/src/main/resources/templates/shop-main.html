@@ -2,9 +2,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Shop</title>
 </head>
 <body>
-
+	<form action="#" th:action="@{/admin/shop/product}" method="post">
+		<select name="productSelect">
+	       	<option value="">--</option>
+	       	<option
+	      		th:each="product : ${allProducts}"
+	      		th:value="${product.name}"
+	       		th:text="${product.name}">
+	       	</option>
+	   	</select>
+   		<button type="submit">View product</button>
+   	</form>
+   		<form action="#" th:action="@{/admin/shop/mat}" method="post">
+		<select name="materialSelect">
+	       	<option value="">--</option>
+	       	<option
+	      		th:each="material : ${allMaterials}"
+	      		th:value="${material.name}"
+	       		th:text="${material.name}">
+	       	</option>
+	   	</select>
+   		<button type="submit">View material</button>
+   	</form>
+   	<form method="post" th:action="@{/admin/cart}">
+		<button type="submit" name="shop">To cart</button>
+	</form>
 </body>
 </html>

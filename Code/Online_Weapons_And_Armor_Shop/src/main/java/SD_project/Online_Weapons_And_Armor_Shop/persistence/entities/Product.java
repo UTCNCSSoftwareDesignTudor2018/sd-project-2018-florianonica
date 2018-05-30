@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.builder.ProductBuilder;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -31,6 +33,15 @@ public class Product {
 	@Column(name = "description")
 	private String description;
 
+	public Product() {}
+	
+	public Product(ProductBuilder builder) {
+		this.name = builder.name;
+		this.description = builder.description;
+		this.type = builder.type;
+		this.price = 1000;
+	}
+	
 	public int getId() {
 		return id;
 	}

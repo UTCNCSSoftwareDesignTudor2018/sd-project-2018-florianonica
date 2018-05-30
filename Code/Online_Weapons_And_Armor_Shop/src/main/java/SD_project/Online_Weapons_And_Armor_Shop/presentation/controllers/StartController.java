@@ -1,5 +1,7 @@
 package SD_project.Online_Weapons_And_Armor_Shop.presentation.controllers;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.AdministratorService;
 import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.ClientService;
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.services.OrderService;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Administrator;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Client;
+import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Order;
 
 @Controller
 @RequestMapping("/start")
@@ -23,6 +27,9 @@ public class StartController {
 	private ClientService cs;
 	
 	@Autowired
+	private OrderService os;
+	
+	@Autowired
 	private AdminController ac;
 	
 	@Autowired
@@ -32,6 +39,8 @@ public class StartController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView startApp() {
+		cc.setLogged(false);
+		ac.setLogged(false);
 		return new ModelAndView("login-page");
 	}
 
@@ -47,11 +56,20 @@ public class StartController {
 		} else if (c == null) {
 			ModelAndView mvl = new ModelAndView("admin-main-page");
 			mvl.addObject("administrator", a);
+			ac.setLogged(true);
 			ac.setA(a);
 			return mvl;
 		} else if (a == null) {
 			ModelAndView mvl = new ModelAndView("client-main-page");
+			Order o = new Order();
+			o.setClient(c);
+			o.setDate(java.sql.Date.valueOf(LocalDateTime.now().toLocalDate()));
+			o.setPayment("none");
 			mvl.addObject("client", c);
+			cc.setLogged(true);
+			cc.setC(c);
+			os.makeOrder(o);
+			cc.setO(o);
 			return mvl;
 		}
 		ModelAndView mvl = new ModelAndView("login-page");

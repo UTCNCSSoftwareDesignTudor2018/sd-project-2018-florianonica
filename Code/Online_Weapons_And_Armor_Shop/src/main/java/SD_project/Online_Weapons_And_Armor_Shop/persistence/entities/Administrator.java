@@ -32,9 +32,6 @@ public class Administrator {
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "card")
-	private String card;
-
 	public int getId() {
 		return id;
 	}
@@ -91,11 +88,4 @@ public class Administrator {
 		this.email = email;
 	}
 
-	public String getCard() {
-		return card;
-	}
-
-	public void setCard(String card) {
-		this.card = card;
-	}
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Product</title>
+</head>
+<body>
+<p>
+	<form method="POST" th:action="@{/admin/shop/material/add}">
+		<table>
+			<tr>
+				<td>Material ID: </td>
+				<td><p th:text="${material.id}" th:name="id"></p></td>
+			</tr>
+			
+			<tr>
+				<td>Name: </td>
+				<td><p th:text="${material.name}" th:name="name"></p></td>
+			</tr>
+			
+			<tr>
+				<td>Description: </td>
+				<td><p th:text="${material.description}" th:name="description"></p></td>
+			</tr>
+			
+			<tr>
+				<td>Price: </td>
+				<td><p th:text="${material.price}" th:name="price"></p></td>
+			</tr>
+
+			<tr>
+				<td><button type="submit">Add to cart</button></td>
+			</tr>
+		</table>
+	</form>
+</p>
+	<br>
+<form method="post" th:action="@{/admin/shop}">
+	<button type="submit" name="shop">Back to shop</button>
+</form>
+<form method="post" th:action="@{/admin/cart}">
+	<button type="submit" name="shop">To cart</button>
+</form>
+</body>
+</html>

@@ -2,28 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Hello! This is your teacher page</title>
+<title>Hello! This is your admin page</title>
 </head>
 <body>
 <h1>Welcome <p th:text="${administrator.firstName}"></p> <p th:text="${administrator.lastName}"></p></h1>
 <br><br><br><br><br><br>
-	<center>
-	
 		<form method="post" th:action="@{/admin/profile}">
 			<button type="submit" name="profile">Profile Page</button>
-		</form>
-	<br>
-		<form method="post" th:action="@{/admin/shop}">
-			<button type="submit" name="shop">Shop Page</button>
 		</form>
 	<br>
 		<form method="post" th:action="@{/admin/flagged}">
 			<button type="submit" name="flagged">Flagged-Reviews Page</button>
 		</form>
 	<br>
-		<form method="post" th:action="@{/admin/logout}">
+		<form method="get" th:action="@{/start/}">
 			<button type="submit" name="shop">Logout</button>
 		</form>
-	</center>
+	<br>
+		<form method="post" th:action="@{/admin/create}">
+			<button type="submit" name="shop">Create new admin</button>
+		</form>
 </body>
 </html>

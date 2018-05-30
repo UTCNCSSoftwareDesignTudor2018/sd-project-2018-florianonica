@@ -2,13 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Hello! This is your student page</title>
+<title>Hello! This is your user page</title>
 </head>
 <body>
 <h1>Welcome <p th:text="${client.firstName}"></p> <p th:text="${client.lastName}"></p></h1>
 <br><br><br><br><br><br>
-	<center>
-	
 		<form method="post" th:action="@{/client/profile}">
 			<button type="submit" name="profile">Profile Page</button>
 		</form>
@@ -16,11 +14,15 @@
 		<form method="post" th:action="@{/client/shop}">
 			<button type="submit" name="shop">Shop Page</button>
 		</form>
+		
 	<br>
-		<form method="post" th:action="@{/client/logout}">
-			<button type="submit" name="shop">Logout</button>
+		<form method="post" th:action="@{/client/create}">
+			<button type="submit" name="shop">Shop Page</button>
 		</form>
 		
-		</center>
+	<br>
+		<form method="get" th:action="@{/start/}">
+			<button type="submit" name="shop">Logout</button>
+		</form>
 </body>
 </html>
