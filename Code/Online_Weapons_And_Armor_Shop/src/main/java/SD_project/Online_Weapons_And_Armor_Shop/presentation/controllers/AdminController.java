@@ -37,6 +37,8 @@ public class AdminController {
 	private ReviewService rs;
 
 	private Administrator a;
+	
+	private Product p;
 
 	@SuppressWarnings("unused")
 	private Boolean logged;
@@ -48,23 +50,47 @@ public class AdminController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/admin/shop", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/products", method = RequestMethod.POST)
 	public ModelAndView shop() {
 		ModelAndView mv = new ModelAndView("shop-main");
 		List<Product> lp = ps.getAll();
-		List<Material> lm = ms.getAll();
 		mv.addObject("allProducts", lp);
-		mv.addObject("allMaterials", lm);
-		return mv;
+        return mv;
 	}
 
 	@RequestMapping(value = "/admin/shop/product", method = RequestMethod.POST)
 	public ModelAndView prod(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("product");
+		ModelAndView mv = new ModelAndView("producta");
 		String name = request.getParameter("productSelect");
-		Product p = ps.getByName(name);
-		mv.addObject("product", p);
-		return mv;
+		Product pro = ps.getByName(name);
+		this.p = pro;
+		mv.addObject("product", pro);
+        return mv;
+	}
+	
+	@RequestMapping(value = "/admin/shop/product/modify", method = RequestMethod.POST)
+	public ModelAndView prodSave(@RequestParam(value = "name", required = false) String name,
+    		@RequestParam(value = "description", required = false) String description,
+    		@RequestParam(value = "price", required = false) int price,
+    		@RequestParam(value = "stock", required = false) int stock) {
+		ModelAndView mv = new ModelAndView("producta");
+		Product pro = p;
+		pro.setName(name);
+		pro.setDescription(description);
+		pro.setPrice(price);
+		pro.setStock(stock);
+		ps.makeProduct(pro);
+		mv.addObject("product", pro);
+        return mv;
+	}
+	
+	@RequestMapping(value = "/admin/deleteprod", method = RequestMethod.POST)
+	public ModelAndView prodDel() {
+		ps.delete(p);
+		ModelAndView mv = new ModelAndView("shop-main");
+		List<Product> lp = ps.getAll();
+		mv.addObject("allProducts", lp);
+        return mv;
 	}
 
 	@RequestMapping(value = "/admin/shop/mat", method = RequestMethod.POST)

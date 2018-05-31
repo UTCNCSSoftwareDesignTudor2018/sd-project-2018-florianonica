@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.validators.EmailValidator;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Client;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.repositories.ClientRepository;
 
@@ -14,6 +15,8 @@ public class ClientService {
 	private ClientRepository cr;
 	
 	public Client makeClient(Client c) {
+		EmailValidator ev = new EmailValidator();
+		ev.validate(c);
 		return cr.save(c);
 	}
 	

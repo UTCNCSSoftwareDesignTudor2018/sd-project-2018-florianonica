@@ -92,7 +92,7 @@ public class StartController {
     		@RequestParam(value = "lastName", required=false) String lastName,
     		@RequestParam(value = "email", required=false) String email,
     		@RequestParam(value = "address", required=false) String address) {
-		if (!password.equals(cpassword)) {
+		if (!password.equals(cpassword) || password.length() < 6) {
 			ModelAndView mvl = new ModelAndView("sign-up");
 			Client c = new Client();
 			mvl.addObject("loginError", true);

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.validators.PriceValidator;
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.validators.StockValidator;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Product;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.repositories.ProductRepository;
 
@@ -14,6 +16,10 @@ public class ProductService {
 	private ProductRepository pr;
 
 	public Product makeProduct(Product p) {
+		PriceValidator pv = new PriceValidator();
+		StockValidator sv = new StockValidator();
+		pv.validate(p);
+		sv.validate(p);
 		return pr.save(p);
 	}
 

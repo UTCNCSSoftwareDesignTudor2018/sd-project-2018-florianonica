@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Product</title>
+</head>
+<body>
+<p>
+	<form method="POST" th:action="@{/admin/shop/product/modify}">
+		<table>
+			<tr>
+				<td>Product ID: </td>
+				<td><p th:text="${product.id}" th:name="id"></p></td>
+			</tr>
+			
+			<tr>
+				<td>Name: </td>
+				<td><input th:value="${product.name}" th:name="name" th:type="text"/></td>
+			</tr>
+			
+			<tr>
+				<td>Type: </td>
+				<td><p th:text="${product.type}" th:name="type"></p></td>
+			</tr>
+			
+			<tr>
+				<td>Description: </td>
+				<td><input th:value="${product.description}" th:name="description" th:type="text"/></td>
+			</tr>
+			
+						<tr>
+				<td>Price: </td>
+				<td><input th:value="${product.price}" th:name="price" th:type="text"/></td>
+			</tr>
+			
+			<tr>
+				<td>Stock: </td>
+				<td><input th:value="${product.stock}" th:name="stock" th:type="text"/></td>
+			</tr>
+
+			<tr>
+				<td><button type="submit">Save</button></td>
+			</tr>
+		</table>
+	</form>
+</p>
+<br>
+		<form method="post" th:action="@{/admin/deleteprod}">
+			<button type="submit" name="delete">Delete</button>
+		</form>
+</body>
+</html>

@@ -146,6 +146,7 @@ public class ClientController {
 	@RequestMapping(value ="/client/delete",  method = RequestMethod.POST)
     public ModelAndView deleteItem(@RequestParam(value = "opID", required = false) int id) {
 		ops.deleteById(id);
+		p.setStock(p.getStock() + 1);
 		List<OrderProduct> op = ops.getByOrderId(o.getId());
 		ModelAndView mv = new ModelAndView("cart");
 		mv.addObject("Products", op);
@@ -197,6 +198,8 @@ public class ClientController {
 		op.setProduct(pro);
 		op.setQuantity(1);
 		ops.makeOrderProduct(op);
+		p.setStock(p.getStock() - 1);
+		ps.makeProduct(p);
 		ModelAndView mv = new ModelAndView("client-main-page");
 		mv.addObject("client", c);
         return mv;

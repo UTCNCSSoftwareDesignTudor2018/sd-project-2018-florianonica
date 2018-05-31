@@ -14,7 +14,7 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "username")
+	@Column(name = "username", unique = true)
 	private String username;
 
 	@Column(name = "password")
@@ -29,7 +29,7 @@ public class Client {
 	@Column(name = "address")
 	private String address;
 
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email;
 	
 	@Column(name = "card")

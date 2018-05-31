@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import SD_project.Online_Weapons_And_Armor_Shop.bussiness.validators.QuantityValidator;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.OrderProduct;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.repositories.OrderProductRepository;
 
@@ -14,6 +15,8 @@ public class OrderProductService {
 	private OrderProductRepository opr;
 	
 	public OrderProduct makeOrderProduct(OrderProduct op) {
+		QuantityValidator qv = new QuantityValidator();
+		qv.validate(op);
 		return opr.save(op);
 	}
 	
