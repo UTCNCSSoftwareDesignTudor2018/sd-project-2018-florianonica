@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Create product</title>
+</head>
+<body>
+	<form action="#" th:action="@{/client/create/save}" method="post">
+		<input type="text" name="name">
+		<select name="typeSelection">
+	       	<option value="melee">Melee</option>
+	       	<option value="armor">Armor</option>
+	       	<option value="ranged">Ranged</option>
+	   	</select>
+	   	<input type="text" name="description">
+   		<button type="submit">Create</button>
+   	</form>
+   	
+<form method="post" th:action="@{/client/}">
+	<button type="submit" name="shop">Back to main page</button>
+</form>
+</body>
+</html>

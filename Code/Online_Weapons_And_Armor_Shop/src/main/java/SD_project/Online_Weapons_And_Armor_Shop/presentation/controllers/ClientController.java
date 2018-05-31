@@ -23,6 +23,7 @@ import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Order;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.OrderProduct;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Product;
 import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.Review;
+import SD_project.Online_Weapons_And_Armor_Shop.persistence.entities.builder.ProductBuilder;
 
 @Controller
 //@RequestMapping("/client")
@@ -52,8 +53,15 @@ public class ClientController {
 	
 	private Product p;
 	
+	@RequestMapping(value ="/client/",  method = RequestMethod.POST)
+    public ModelAndView mainPage() {
+		ModelAndView mv = new ModelAndView("client-main-page");
+		mv.addObject("client", c);
+        return mv;
+    }
+	
 	@RequestMapping(value ="/client/profile",  method = RequestMethod.POST)
-    public ModelAndView studentProfile() {
+    public ModelAndView profile() {
 		ModelAndView mv = new ModelAndView("client-profile");
 		mv.addObject("client", c);
         return mv;
@@ -149,6 +157,48 @@ public class ClientController {
 		List<OrderProduct> op = ops.getByOrderId(o.getId());
 		ModelAndView mv = new ModelAndView("cart");
 		mv.addObject("Products", op);
+        return mv;
+    }
+	
+	@RequestMapping(value ="/client/write",  method = RequestMethod.POST)
+    public ModelAndView writeReview(@RequestParam(value = "review", required = false) String rev) {
+		Review r = new Review();
+		r.setFlagged(false);
+		r.setProduct(p);
+		r.setReview(rev);
+		rs.makeReview(r);
+		ModelAndView mv = new ModelAndView("productc");
+		Product pro = p;
+		List<Review> rr = rs.getByProductId(p.getId());
+		mv.addObject("product", pro);
+		mv.addObject("Reviews", rr);
+        return mv;
+    }
+	
+	@RequestMapping(value ="/client/create",  method = RequestMethod.POST)
+    public ModelAndView create() {
+		ModelAndView mv = new ModelAndView("create-product");
+        return mv;
+    }
+	
+	@RequestMapping(value ="/client/create/save",  method = RequestMethod.POST)
+    public ModelAndView createItem(HttpServletRequest request,
+    		@RequestParam(value = "name", required = false) String name,
+    		@RequestParam(value = "description", required = false) String description) {
+		String type = request.getParameter("typeSelection");
+		ProductBuilder pb = new ProductBuilder();
+		pb.setDescription(description);
+		pb.setName(name);
+		pb.setType(type);
+		Product pro = new Product(pb);
+		ps.makeProduct(pro);
+		OrderProduct op = new OrderProduct();
+		op.setOrder(o);
+		op.setProduct(pro);
+		op.setQuantity(1);
+		ops.makeOrderProduct(op);
+		ModelAndView mv = new ModelAndView("client-main-page");
+		mv.addObject("client", c);
         return mv;
     }
 	

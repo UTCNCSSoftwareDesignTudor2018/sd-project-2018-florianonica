@@ -58,10 +58,18 @@
 			</form>
 		</tr>
 	</table>
-
+<h1>Write review</h1>	
+	<form method="post" th:action="@{/client/write}">
+		<input type="text" name="review">
+       	<input type="submit">
+    </form>
 
 <form method="post" th:action="@{/client/shop}">
 	<button type="submit" name="shop">Back to shop</button>
+</form>
+
+<form method="post" th:action="@{/client/}">
+	<button type="submit" name="shop">Back to main page</button>
 </form>
 
 <form method="post" th:action="@{/client/cart}">

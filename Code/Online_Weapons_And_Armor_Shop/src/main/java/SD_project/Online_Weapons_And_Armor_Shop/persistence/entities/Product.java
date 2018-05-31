@@ -39,7 +39,14 @@ public class Product {
 		this.name = builder.name;
 		this.description = builder.description;
 		this.type = builder.type;
-		this.price = 1000;
+		if(builder.type.equals("armor")) {
+			this.price = 10000;
+		}
+		else {
+			this.price = 2500;
+		}
+		this.stock = 1;
+		
 	}
 	
 	public int getId() {

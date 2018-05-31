@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Shop</title>
@@ -30,5 +30,8 @@
    	<form method="post" th:action="@{/client/cart}">
 		<button type="submit" name="shop">To cart</button>
 	</form>
+<form method="post" th:action="@{/client/}">
+	<button type="submit" name="shop">Back to main page</button>
+</form>
 </body>
 </html>

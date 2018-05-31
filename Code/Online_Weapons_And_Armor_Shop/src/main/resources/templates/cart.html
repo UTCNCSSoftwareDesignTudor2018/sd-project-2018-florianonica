@@ -22,6 +22,11 @@
 <form method="post" th:action="@{/client/shop}">
 	<button type="submit" name="shop">Back to shop</button>
 </form>
+
+<form method="post" th:action="@{/client/}">
+	<button type="submit" name="shop">Back to main page</button>
+</form>
+
 <h1>Payment method:</h1>
 	<form action="#" th:action="@{/client/checkout}" method="post">
 		<select name="paymentMethod">
